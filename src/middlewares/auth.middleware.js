@@ -1,12 +1,12 @@
-import { verifyToken } from "../utils/jwt.js";
+import { verifyTokenUser } from "../utils/jwt.js";
 
-export function authMiddleware(req, res, next) {
+export function authMiddlewareUser(req, res, next) {
   const authHeaders = req.headers.authorization;
   if (!authHeaders) return res.sendStatus(401);
   console.log("authHeader=>", authHeaders);
-  const token = authHeaders.split(" ")[1];
+  const tokenUser = authHeaders.split(" ")[1];
   try {
-    const payload = verifyToken(token);
+    const payload = verifyTokenUser(tokenUser);
     req.userId = payload.userId;
     next()
   } catch {
