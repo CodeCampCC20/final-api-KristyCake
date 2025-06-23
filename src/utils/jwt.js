@@ -6,3 +6,10 @@ export function verifyTokenUser(tokenUser) {
   });
   return payload;
 }
+
+export function verifyTokenDoctor(tokenDoctor) {
+  const payload = jwt.verify(tokenDoctor, process.env.SECRET_DOC, {
+    algorithms: ["HS256"],
+  });
+  return payload;
+}

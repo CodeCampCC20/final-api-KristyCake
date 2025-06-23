@@ -54,7 +54,12 @@ export function generateTokenDoctor(doctorId) {
   return token;
 }
 
-export async function getMeUser(userId) {
-  const user = await prisma.user.findUnique({ where: { userId } });
+export async function getMeUser(id) {
+  const user = await prisma.user.findUnique({ where: { id } });
   return user;
+}
+
+export async function getMeDoctor(id) {
+  const doctor = await prisma.doctor.findUnique({ where: { id } });
+  return doctor;
 }

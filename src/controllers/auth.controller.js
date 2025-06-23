@@ -1,5 +1,5 @@
 import prisma from "../config/prisma.js";
-import { createDoctor, createUser, verifyUser, generateTokenUser, verifyDoctor, generateTokenDoctor, getMeUser } from "../services/auth.service.js";
+import { createDoctor, createUser, verifyUser, generateTokenUser, verifyDoctor, generateTokenDoctor, getMeUser, getMeDoctor } from "../services/auth.service.js";
 // import { createError } from "../utils/create.error.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken"
@@ -36,7 +36,15 @@ export async function loginDoctor(req, res) {
 }
 
 export async function meUser(req, res) {
-  const { userId } = req.userId;
+  const userId = req.userId;
   const user = await getMeUser(userId);
+  console.log(user)
   res.json({ id: user.id, name: user.username_cust })
+}
+
+export async function meDoctor(req, res) {
+  const doctorId = req.doctorId;
+  const doctor = await getMeDoctor(doctorId);
+  console.log(doctor)
+  res.json({ id: doctor.id, name: username_cust })
 }

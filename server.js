@@ -12,7 +12,7 @@ app.use(cors());
 // app.use(morgan('dev'));
 app.use(express.json());
 
-app.use('/auth', authRouter) // for login and register of dictor and user
+app.use('/auth', authRouter) // for login and register of doctor and user
 
 // 404
 app.use(notFound)
